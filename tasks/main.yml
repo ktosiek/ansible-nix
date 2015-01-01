@@ -1,0 +1,46 @@
+- name: Download Nix
+  get_url:
+    url: http://hydra.nixos.org/build/17897594/download/1/{{ nix_package_name }}
+    dest: /root/{{ nix_package_name }}
+
+- name: Install Nix
+  apt:
+    deb: /root/{{ nix_package_name }}
+
+- name: Prepare build users group
+  group:
+    name: nixbld
+    system: yes
+
+- name: Prepare Nix users group
+  group:
+    name: nix-users
+    system: yes
+
+- name: Prepare build users
+  user:
+    name: nixbld{{ item }}
+    comment: Nix build user {{ item }}
+    group: nixbld
+    groups: ''
+    home: /var/empty
+    createhome: no
+  with_sequence: start=1 count=10
+
+- name: Set permission on Nix daemon socket dir
+  file:
+    path: /nix/var/nix/daemon-socket
+    state: directory
+    group: nix-users
+    mode: g=rX,o=
+
+- name: Run the Nix daemon
+  service:
+    name: nix-daemon
+    state: started
+    enabled: yes
+
+- name: Create profile.d script
+  template:
+    src: etc/profile.d/nix-remote.sh
+    dest: /etc/profile.d/nix-remote.sh
