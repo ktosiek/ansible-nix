@@ -22,7 +22,7 @@
     name: nixbld{{ item }}
     comment: Nix build user {{ item }}
     group: nixbld
-    groups: ''
+    groups: nixbld
     home: /var/empty
     createhome: no
   with_sequence: start=1 count=10
