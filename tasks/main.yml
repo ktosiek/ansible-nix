@@ -17,6 +17,13 @@
     name: nix-users
     system: yes
 
+- name: Add users to the Nix users group
+  user:
+    name: '{{ item }}'
+    append: yes
+    groups: nix-users
+  with_items: nix_users
+
 - name: Prepare build users
   user:
     name: nixbld{{ item }}
