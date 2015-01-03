@@ -17,6 +17,13 @@
     name: nix-users
     system: yes
 
+- name: Create the profiles directory
+  file:
+    path: /nix/var/nix/profiles
+    state: directory
+    group: nix-users
+    mode: 'g=rwX'
+
 - name: Add users to the Nix users group
   user:
     name: '{{ item }}'
