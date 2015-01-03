@@ -1,9 +1,0 @@
-- hosts: all
-  pre_tasks:
-    assert:
-      that:
-        - ansible_distribution_release == 'utopic'
-        - ansible_architecture == 'x86_64'
-
-  roles:
-    - ktosiek/nix

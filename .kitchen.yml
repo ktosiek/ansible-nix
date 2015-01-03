@@ -1,0 +1,31 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  hosts: all
+  ansible_apt_repo: ppa:ansible/ansible
+  ansible_verbose: yes
+  ansible_verbosity: 3
+#  roles_path: roles
+  extra_vars:
+    nix_users: [vagrant]
+
+platforms:
+  - name: ubuntu-14.04-amd64
+    driver:
+      box: trusty64
+      box_url: http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+  - name: ubuntu-14.04-i386
+    driver:
+      box: trusty32
+      box_url: http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box
+#  - name: ubuntu-14.10
+#    driver:
+#      box: bunchc/utopic-x64
+
+suites:
+  - name: default
+    run_list:
+    attributes:
