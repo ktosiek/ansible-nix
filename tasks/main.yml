@@ -1,6 +1,6 @@
 - name: Download Nix
   get_url:
-    url: http://hydra.nixos.org/build/17897594/download/1/{{ nix_package_name }}
+    url: '{{ nix_package_url }}'
     dest: /root/{{ nix_package_name }}
 
 - name: Install Nix

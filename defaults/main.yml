@@ -1,4 +1,15 @@
-nix_version: 1.8-1
+nix_version: '1.8'
 nix_platform: amd64
+nix_package_url: '{{ nix_package_urls[nix_version][ansible_distribution_release][ansible_architecture] }}'
+nix_package_name: 'nix_{{ nix_version }}-1{{ ansible_distribution_release }}.deb'
+
+nix_package_urls:
+  '1.8':
+    utopic:
+      x86_64: http://hydra.nixos.org/build/17897594/download/1/nix_1.8-1_amd64.deb
+      i686: http://hydra.nixos.org/build/17897599/download/1/nix_1.8-1_i386.deb
+    trusty:
+      x86_64: http://hydra.nixos.org/build/17897583/download/1/nix_1.8-1_amd64.deb
+      i686: http://hydra.nixos.org/build/17897590/download/1/nix_1.8-1_i386.deb
 
 nix_users: []
