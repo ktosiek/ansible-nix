@@ -7,9 +7,9 @@ nix_package_urls:
   '1.8':
     utopic:
       x86_64: http://hydra.nixos.org/build/17897594/download/1/nix_1.8-1_amd64.deb
-      i686: http://hydra.nixos.org/build/17897599/download/1/nix_1.8-1_i386.deb
+      i386: http://hydra.nixos.org/build/17897599/download/1/nix_1.8-1_i386.deb
     trusty:
       x86_64: http://hydra.nixos.org/build/17897583/download/1/nix_1.8-1_amd64.deb
-      i686: http://hydra.nixos.org/build/17897590/download/1/nix_1.8-1_i386.deb
+      i386: http://hydra.nixos.org/build/17897590/download/1/nix_1.8-1_i386.deb
 
 nix_users: []
