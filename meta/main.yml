@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Tomasz Kontusz
+  description: Install Nix package manager
+  license: BSD
+  min_ansible_version: 1.8
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+
+  categories:
+  - packaging
+  - system
+dependencies: []
