@@ -2,6 +2,8 @@
 
 NIX_USER=vagrant
 
+USER_HOME=$(eval echo ~${NIX_USER})
+
 run_u() {
     run sudo -u ${NIX_USER} -i "${@}"
 }
@@ -11,7 +13,7 @@ as_user() {
 }
 
 # Update nix-channel before running any tests
-[ -f $(eval echo ~${NIX_USER}/.nix-defexpr) ] || \
+[ -f "$USER_HOME/.nix-defexpr" ] || \
     run_u nix-channel --update
 
 @test "NIX_REMOTE is set for ${NIX_USER}" {
@@ -23,4 +25,9 @@ as_user() {
   run_u nix-env -iA nixpkgs.hello
   [ "$status" -eq 0 ]
   as_user which hello
+}
+
+@test "${NIX_USER} has it's own profile" {
+  readlink $USER_HOME/.nix-profile | \
+      grep $NIX_USER
 }

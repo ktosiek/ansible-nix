@@ -58,3 +58,10 @@
   template:
     src: etc/profile.d/nix-remote.sh
     dest: /etc/profile.d/nix-remote.sh
+
+- name: Fix the nix.sh script
+  lineinfile:
+    dest: /etc/profile.d/nix.sh
+    regexp: '^( *_NIX_DEF_LINK)='
+    line: \1=/nix/var/nix/profiles/per-user/${USER}/profile
+    backrefs: yes
