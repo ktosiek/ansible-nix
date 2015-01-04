@@ -5,12 +5,17 @@ driver:
 provisioner:
   name: ansible_playbook
   hosts: all
-  ansible_apt_repo: ppa:ansible/ansible
   ansible_verbose: yes
   ansible_verbosity: 3
 #  roles_path: roles
   extra_vars:
     nix_users: [vagrant]
+
+# Use native ruby
+  chef_bootstrap_url: no
+
+busser:
+  ruby_bindir: /usr/bin
 
 platforms:
   - name: ubuntu-14.04-amd64
@@ -21,6 +26,7 @@ platforms:
     driver:
       box: trusty32
       box_url: http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box
+# TODO: waits for utopic in ppa:ansible/ansible
 #  - name: ubuntu-14.10
 #    driver:
 #      box: bunchc/utopic-x64
