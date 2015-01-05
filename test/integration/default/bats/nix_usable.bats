@@ -31,3 +31,7 @@ as_user() {
   readlink $USER_HOME/.nix-profile | \
       grep $NIX_USER
 }
+
+@test "trusted caches are added to /etc/nix/nix.conf" {
+  egrep '^trusted-binary-caches = http://mycache.example.com/' /etc/nix/nix.conf
+}

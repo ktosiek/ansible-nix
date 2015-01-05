@@ -48,11 +48,17 @@
     group: nix-users
     mode: g=rX,o=
 
-- name: Run the Nix daemon
-  service:
-    name: nix-daemon
-    state: started
-    enabled: yes
+- name: Create Nix configuration directory
+  file:
+    path: /etc/nix
+    state: directory
+
+- name: Create Nix configuration
+  template:
+    src: etc/nix/nix.conf
+    dest: /etc/nix/nix.conf
+  notify:
+    - Restart Nix daemon
 
 - name: Create profile.d script
   template:
@@ -65,3 +71,9 @@
     regexp: '^( *_NIX_DEF_LINK)='
     line: \1=/nix/var/nix/profiles/per-user/${USER}/profile
     backrefs: yes
+
+- name: Run the Nix daemon
+  service:
+    name: nix-daemon
+    state: started
+    enabled: yes

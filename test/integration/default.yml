@@ -1,3 +1,5 @@
 - hosts: all
   roles:
     - role: ansible-nix
+      nix_trusted_binary_caches:
+        - http://mycache.example.com/

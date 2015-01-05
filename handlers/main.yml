@@ -1,0 +1,4 @@
+- name: Restart Nix daemon
+  service:
+    name: nix-daemon
+    state: restarted

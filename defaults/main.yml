@@ -13,3 +13,5 @@ nix_package_urls:
       i386: http://hydra.nixos.org/build/17897590/download/1/nix_1.8-1_i386.deb
 
 nix_users: []
+
+nix_trusted_binary_caches: []
