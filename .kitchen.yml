@@ -1,6 +1,6 @@
 ---
 driver:
-  name: vagrant
+  name: <%= ENV['KITCHEN_STYLE'] || 'vagrant' %>
 
 provisioner:
   name: ansible_playbook
