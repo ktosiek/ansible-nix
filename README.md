@@ -10,7 +10,7 @@ Simple local usage
 
 To just setup Nix locally, use:
 
-    sudo ansible-playbook -i localhost, -c local example/playbook.yml -e nix_users=user1,user2,user3
+    cd example/ && sudo ansible-playbook -i localhost, -c local playbook.yml -e nix_users=user1,user2,user3
 
 
 Role Variables
