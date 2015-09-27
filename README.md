@@ -31,6 +31,15 @@ This role doesn't need any configuration apart from setting nix_users.
          - role: ktosiek.nix
            nix_users: user1,user2
 
+
+Hacking
+-------
+
+This role is tested with test-kitchen.
+There's a shell.nix that should provide you with kitchen, kitchen-ansible, and kitchen-vagrant just by running `nix-shell`.
+To run the tests just run `kitchen verify`.
+
+
 License
 -------
 
