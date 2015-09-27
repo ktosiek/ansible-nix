@@ -1,6 +1,0 @@
-language: ruby
-rvm:
-  - 1.9.3
-install: gem install test-kitchen kitchen-ansible kitchen-local
-script:
-  - KITCHEN_STYLE=local kitchen test
